@@ -2,7 +2,9 @@ import React from 'react'
 
 const Navigation = () => {
   return (
-    <div>Navigation</div>
+    <div className='border border-black'>
+        <h1>this is navigation</h1>
+    </div>
   )
 }
 
