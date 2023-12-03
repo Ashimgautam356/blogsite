@@ -9,7 +9,7 @@ const EditorsPick = () => {
         <div className=' w-full font-medium text-3xl mb-4'>
             <h1>EDITOR'S PICK</h1>
         </div>
-        <div className=' flex flex-row w-full sm:flex-col justify-around'>
+        <div className=' flex flex-row w-full sm:flex-col justify-between'>
             <Link className=' md:w-3/12 sm:mt-7'>
             <div className=' flex flex-col  w-full'>
                 <div>
