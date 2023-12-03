@@ -5,11 +5,11 @@ import Footer  from '../components/Footer'
 
 const LandingLayout = () => {
   return (
-    <div>
+    <>
         <Navigation />
         <Outlet></Outlet>
         <Footer></Footer>
-    </div>
+    </>
   )
 }
 
