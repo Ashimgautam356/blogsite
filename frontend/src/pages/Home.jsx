@@ -8,6 +8,7 @@ import HealtFitness from '../components/home/HealtFitness'
 import FoodDrink from '../components/home/FoodDrink'
 import Style from '../components/home/Style'
 import Travel from '../components/home/Travel'
+import Latest from '../components/home/Latest'
 
 const Home = () => {
   return (
@@ -38,6 +39,9 @@ const Home = () => {
 
       {/* Travel */}
       <Travel></Travel>
+
+      {/* latest */}
+      <Latest></Latest>
 
     </div>
   )

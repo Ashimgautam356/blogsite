@@ -18,6 +18,9 @@ module.exports = {
       },
       animation: {
         bgcolorchange: 'bgcolorchange 1s ease-in-out',
+      },
+      boxShadow: {
+        'mine': '6px 6px 1px 2px rgb(219,0,33)',
       }
     },
   },
