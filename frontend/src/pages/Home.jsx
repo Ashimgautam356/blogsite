@@ -5,7 +5,7 @@ import News from '../components/home/News'
 import Pursuites from '../components/home/Pursuites'
 import Gear from '../components/home/Gear'
 import HealtFitness from '../components/home/HealtFitness'
-
+import FoodDrink from '../components/home/FoodDrink'
 
 const Home = () => {
   return (
@@ -29,7 +29,7 @@ const Home = () => {
       <HealtFitness></HealtFitness>
 
       {/* Food and Drink */}
-
+      <FoodDrink></FoodDrink>
       {/* Style */}
       {/* Travel */}
 
