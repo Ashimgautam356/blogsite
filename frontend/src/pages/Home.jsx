@@ -11,7 +11,7 @@ import Travel from '../components/home/Travel'
 
 const Home = () => {
   return (
-    <div className='border border-black flex flex-col items-center'>
+    <div className='flex flex-col items-center'>
       {/* Banner */}
       <Banner></Banner>
       
