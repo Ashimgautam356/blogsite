@@ -3,6 +3,9 @@ import Banner from '../components/home/Banner'
 import EditorsPick from '../components/home/EditorsPick'
 import News from '../components/home/News'
 import Pursuites from '../components/home/Pursuites'
+import Gear from '../components/home/Gear'
+
+
 
 const Home = () => {
   return (
@@ -18,6 +21,17 @@ const Home = () => {
 
       {/* pursuits */}
       <Pursuites></Pursuites>
+
+      {/* Gear */}
+      <Gear></Gear>
+
+      {/* Healt and Fitness */}
+      {/* Food and Drink */}
+
+      {/* Style */}
+      {/* Travel */}
+
+
     </div>
   )
 }
