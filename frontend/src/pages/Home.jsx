@@ -4,7 +4,7 @@ import EditorsPick from '../components/home/EditorsPick'
 import News from '../components/home/News'
 import Pursuites from '../components/home/Pursuites'
 import Gear from '../components/home/Gear'
-
+import HealtFitness from '../components/home/HealtFitness'
 
 
 const Home = () => {
@@ -26,6 +26,8 @@ const Home = () => {
       <Gear></Gear>
 
       {/* Healt and Fitness */}
+      <HealtFitness></HealtFitness>
+
       {/* Food and Drink */}
 
       {/* Style */}
