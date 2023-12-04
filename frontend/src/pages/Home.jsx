@@ -6,6 +6,8 @@ import Pursuites from '../components/home/Pursuites'
 import Gear from '../components/home/Gear'
 import HealtFitness from '../components/home/HealtFitness'
 import FoodDrink from '../components/home/FoodDrink'
+import Style from '../components/home/Style'
+import Travel from '../components/home/Travel'
 
 const Home = () => {
   return (
@@ -30,9 +32,12 @@ const Home = () => {
 
       {/* Food and Drink */}
       <FoodDrink></FoodDrink>
+      
       {/* Style */}
-      {/* Travel */}
+      <Style></Style>
 
+      {/* Travel */}
+      <Travel></Travel>
 
     </div>
   )
