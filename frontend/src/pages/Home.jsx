@@ -12,7 +12,7 @@ import Latest from '../components/home/Latest'
 
 const Home = () => {
   return (
-    <div className='flex flex-col items-center'>
+    <div className='flex flex-col items-center pt-16 '>
       {/* Banner */}
       <Banner></Banner>
       

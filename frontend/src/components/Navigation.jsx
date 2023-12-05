@@ -7,7 +7,7 @@ import { RxCross2 } from "react-icons/rx";
 const Navigation = () => {
     const [displayMenu, setDisplayMenu]= useState(false)
   return (
-    <div className=' bg-mainbg text-secondbg flex flex-row  justify-between items-center  w-full h-12'>
+    <div className=' fixed z-20 bg-mainbg text-secondbg flex flex-row  justify-between items-center  w-full h-12'>
         <div className='font-bold text-lg flex flex-row justify-between items-center sm:w-4/12'>
         <div className='md:hidden'>
             <button onClick={()=>{setDisplayMenu(true)}}>
@@ -28,7 +28,7 @@ const Navigation = () => {
                         </div>
                         <div className='flex flex-col items-center border-r border-l border-white w-full  mt-7 text-xl font-thin '>
                             <h2 className=''>
-                                <Link>Gear</Link>
+                                <Link to="/gear" >Gear</Link>
                             </h2>
                         </div>
                         <div className='flex flex-col items-center border-r border-l border-white w-full  mt-7 text-xl font-thin '>
@@ -38,7 +38,7 @@ const Navigation = () => {
                         </div>
                         <div className='flex flex-col items-center border-r border-l border-white w-full  mt-7 text-xl font-thin '>
                             <h2 className=''>
-                                <Link>Food & Drind</Link>
+                                <Link>Food & Drink</Link>
                             </h2>
                         </div>
                         <div className='flex flex-col items-center border-r border-l border-white w-full  mt-7 text-xl font-thin '>
@@ -71,7 +71,7 @@ const Navigation = () => {
         </div>
         <div className='w-3/6 h-full sm:hidden'>
             <ul className='flex flex-row flex-wrap  justify-evenly items-center h-full text-gray-300 font-semibold'>
-                <li className=' hover:text-white transition-all duration-1000'><Link>Gear</Link></li>
+                <li className=' hover:text-white transition-all duration-1000'><Link to="/gear">Gear</Link></li>
                 <li className=' hover:text-white transition-all duration-1000'><Link>Healt & Fitness</Link></li>
                 <li className=' hover:text-white transition-all duration-1000'><Link>Food & Drink</Link></li>
                 <li className=' hover:text-white transition-all duration-1000'><Link>Style</Link></li>
