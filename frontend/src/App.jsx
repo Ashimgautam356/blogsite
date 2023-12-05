@@ -20,6 +20,7 @@ const App = () => {
               <Route path="/gear" element={<GearLayout></GearLayout>}>
                 <Route index element={<GearPg />}></Route>
               </Route>
+              <Route path="/food" element={<FoodDrinkPg></FoodDrinkPg>}></Route>
             </Route>
 
           </Routes>

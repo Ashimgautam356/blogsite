@@ -1,16 +1,18 @@
 import React from 'react'
+import test12 from '../images/test12.jpg'
+import test10 from '../images/test10.jpg'
 
 const FoodDrinkPg = () => {
   return (
     <div className='pt-16 relative flex flex-col items-center w-full'>
         <div className='font-bold text-5xl center'>
-            <h1>Gear</h1>
+            <h1>Food And Drink</h1>
         </div>
         <div className='font-medium text-lg p-4 w-4/6 sm:w-5/6'>
-            <h2>Read field-tested reviews of the best tech, gadgets, and gear—from your next e-bike or Maserati to the best jackets, joggers, and running shoes.</h2>
+            <h2>Find the finest new spirits releases, most crushable beers, and irresistible recipes from top chefs, brewers, and bartenders.</h2>
         </div>
         <div className='w-full relative flex flex-row justify-center mb-10'> 
-            <img src={test11} alt="" className='w-5/6'/>
+            <img src={test12} alt="" className='w-5/6'/>
         </div>
 
         <div className='relative flex flex-col items-center sm:w-5/6 p-5 w-4/6 h-3/6 mb-20'>
