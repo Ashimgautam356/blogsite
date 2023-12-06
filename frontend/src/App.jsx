@@ -24,6 +24,7 @@ const App = () => {
               <Route path="/fitness" element={<HealthFitnessPg></HealthFitnessPg>}></Route>
               <Route path="/style" element={<StylePg></StylePg>}></Route>
               <Route path="/travel" element={<TravelPg></TravelPg>}></Route>
+              <Route path="/news" element={<NewsPg></NewsPg>}></Route>
 
 
             </Route>
