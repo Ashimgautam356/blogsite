@@ -56,11 +56,6 @@ const Navigation = () => {
                                 <Link to="news">News</Link>
                             </h2>
                         </div>
-                        <div className='flex flex-col items-center border-r border-l border-white w-full  mt-7 text-xl font-thin '>
-                            <h2 className=''>
-                                <Link to="pursuits">Pursuits</Link>
-                            </h2>
-                        </div>
                     </div>
                 )
             }
@@ -77,7 +72,6 @@ const Navigation = () => {
                 <li className=' hover:text-white transition-all duration-1000'><Link to="/style">Style</Link></li>
                 <li className=' hover:text-white transition-all duration-1000'><Link to="/travel">Travel</Link></li>
                 <li className=' hover:text-white transition-all duration-1000'><Link to="/news">News</Link></li>
-                <li className=' hover:text-white transition-all duration-1000'><Link to="/puruits">Pursuits</Link></li>
             </ul>
         </div>
 
