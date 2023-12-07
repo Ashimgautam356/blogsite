@@ -10,6 +10,7 @@ import StylePg from "./pages/StylePg"
 import TravelPg from "./pages/TravelPg"
 import GearLayout from "./layouts/GearLayout";
 import SearchPg from "./pages/SearchPg";
+import Admin from "./pages/Admin";
 
 
 const App = () => {
@@ -28,8 +29,8 @@ const App = () => {
               <Route path="/travel" element={<TravelPg></TravelPg>}></Route>
               <Route path="/news" element={<NewsPg></NewsPg>}></Route>
               <Route path="/search" element={<SearchPg></SearchPg>}></Route>
-
             </Route>
+              <Route path="/admin" element={<Admin></Admin>}></Route>
 
           </Routes>
       </BrowserRouter>
