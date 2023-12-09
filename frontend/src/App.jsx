@@ -11,6 +11,8 @@ import TravelPg from "./pages/TravelPg"
 import GearLayout from "./layouts/GearLayout";
 import SearchPg from "./pages/SearchPg";
 import Admin from "./pages/Admin";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 
 const App = () => {
@@ -29,7 +31,10 @@ const App = () => {
               <Route path="/travel" element={<TravelPg></TravelPg>}></Route>
               <Route path="/news" element={<NewsPg></NewsPg>}></Route>
               <Route path="/search" element={<SearchPg></SearchPg>}></Route>
+
             </Route>
+              <Route path="/login" element={<Login></Login>}></Route>
+              <Route path="/signup" element={<Signup></Signup>}></Route>
               <Route path="/admin" element={<Admin></Admin>}></Route>
 
           </Routes>

@@ -18,8 +18,8 @@ const Navigation = () => {
                 displayMenu && (
                     <div className='w-full h-screen flex flex-col items-center bg-mainbg absolute top-0 left-0 p-5'>
                         <div className='w-full h-10 flex flex-row justify-between items-center border-b border-white'>
-                            <div >
-                                <h1 className='text-3xl font-medium'>JOURNAL</h1>
+                            <div>
+                                <h1 className='text-3xl font-medium pl-10'>JOURNAL</h1>
                             </div>
                             <div className='text-2xl'>
                                 <button onClick={()=>{setDisplayMenu(false)}}>
@@ -62,7 +62,7 @@ const Navigation = () => {
             }
         </div>
            <Link to="/">
-            <h1>JOURNAL</h1>
+            <h1 className='ml-10'>JOURNAL</h1>
            </Link>
         </div>
         <div className='w-3/6 h-full sm:hidden'>
@@ -79,10 +79,10 @@ const Navigation = () => {
         {/* search */}
         <div className='flex flex-row justify-around md:w-1/4 items-center'>
             {
-                userStatus != true ? (
+                userStatus !== true ? (
                 <div>
-                    <Link className='p-2'>Login</Link>
-                    <Link className='p-2'>Signup</Link>
+                    <Link className='p-2' to='/login'>Login</Link>
+                    <Link className='p-2' to="/signup">Signup</Link>
                 </div>
                 ) :(
                     <div className='flex flex-row justify-around'>
