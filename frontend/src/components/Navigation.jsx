@@ -5,6 +5,7 @@ import { HiMiniBars3CenterLeft } from "react-icons/hi2";
 import { RxCross2 } from "react-icons/rx";
 
 const Navigation = () => {
+    const [userStatus,setUserStatus] = useState(false)
     const [displayMenu, setDisplayMenu]= useState(false)
   return (
     <div className=' fixed z-20 bg-mainbg text-secondbg flex flex-row  justify-between items-center  w-full h-12'>
@@ -76,7 +77,20 @@ const Navigation = () => {
         </div>
 
         {/* search */}
-        <div>
+        <div className='flex flex-row justify-around md:w-1/4 items-center'>
+            {
+                userStatus != true ? (
+                <div>
+                    <Link className='p-2'>Login</Link>
+                    <Link className='p-2'>Signup</Link>
+                </div>
+                ) :(
+                    <div className='flex flex-row justify-around'>
+                        <h1 className='p-2'>User</h1>
+                        <Link className='p-2'>Logout</Link>
+                    </div>
+                )
+            }
             <Link to="search" className='text-xl font-semibold'><GoSearch></GoSearch></Link>
         </div>
     </div>
