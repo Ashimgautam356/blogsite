@@ -11,13 +11,13 @@ const Login = () => {
     const submitHandler = async(e)=>{
         e.preventDefault();
         try{
-            const response = await Axios.post('http://localhost:3001/api/user/login',{
+            const response = await Axios.post('user/login',{
                 userName:username,
                 password:password,
                 // img: file,
             })
 
-            if(response.data == 'login sucessfull'){
+            if(response.data === 'login sucessfull'){
             navigate('/');
             }
         }
