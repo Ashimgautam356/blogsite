@@ -30,7 +30,7 @@ const userSignup = async (req, res) => {
 const userLogin = (req, res) => {
   const { userName, password } = req.body;
   db.query(
-    "SELECT userName,password FROM users WHERE userName= ? AND password = ?",
+    "SELECT * FROM users WHERE userName= ? AND password = ?",
     [userName, password],
     (err,result) => {
       if (err) {
@@ -55,12 +55,13 @@ const userLogin = (req, res) => {
         // }).status(200).json("login sucessfull");
 
         // this cookie is for stateless
+        const {password, ...other} = result[0]
         res.cookie("uid",token,{
           httpOnly:true,
           sameSite:"None",
           domain: 'localhost',
           secure: true,
-        }).status(200).json("login sucessfull");
+        }).status(200).json(other);
       }
     }
   );

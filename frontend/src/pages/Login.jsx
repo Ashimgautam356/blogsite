@@ -1,28 +1,31 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import {AuthContext} from '../context/authContext'
 
 const Login = () => {
     const [username,setUsername] = useState('') 
     const [password,setPassword] = useState('') 
+    const [err,setErr] = useState('')
+
 
     const navigate = useNavigate();
+
+    const {login} = useContext(AuthContext)
 
     const submitHandler = async(e)=>{
         e.preventDefault();
         try{
-            const response = await Axios.post('user/login',{
+            await login({
                 userName:username,
                 password:password,
                 // img: file,
-            })
+            })  
+        navigate('/');
 
-            if(response.data === 'login sucessfull'){
-            navigate('/');
-            }
         }
         catch(err){
-            console.log(err)
+            setErr(err.response.data)
         }    
     }
   return (
@@ -39,7 +42,9 @@ const Login = () => {
                 <label htmlFor="password">Password:-   </label>
                 <input type='password' className='focus:outline-none bg-[rgb(247,120,4)] border border-white rounded-md placeholder-gray-300 p-2 text-gray-200 font-light sm:w-4/6' placeholder='tom@gmail.com' required value={password} onChange={(e)=>{setPassword(e.target.value)}}></input>
             </div>
-          
+            <div className='mb-6 text-center text-red-800'>
+                <p>{err}</p>
+            </div>
             <div className='mb-6 text-center'>
                 <input type='submit'  className='focus:outline-none bg-[rgb(247,120,4)] border border-white rounded-md p-2 cursor-pointer'></input>
             </div>
