@@ -19,7 +19,6 @@ const Login = () => {
             await login({
                 userName:username,
                 password:password,
-                // img: file,
             })  
         navigate('/');
 

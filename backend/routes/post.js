@@ -1,9 +1,9 @@
 const express = require('express')
-const {getPost,uploadPost} = require('../controllers/post')
+const {getPost,addPost} = require('../controllers/post')
 const router = express.Router(); 
 
-router.route('/get').get(getPost)
-router.route('/post').post(uploadPost)
+router.route('/fetch').get(getPost)
+router.route('/set').post(addPost)
 
 
 module.exports = router

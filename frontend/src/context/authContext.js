@@ -9,14 +9,11 @@ export const AuthContextProvider = ({children})=>{
 
     const login = async (inputs)=>{
         const response = await Axios.post('user/login',inputs)
-        
         setCurrentUser(response.data)
         
     }
 
-    const logout = async (inputs)=>{
-         await Axios.post('user/logout',inputs)
-        
+    const logout = async ()=>{       
         setCurrentUser(null)
         
     }

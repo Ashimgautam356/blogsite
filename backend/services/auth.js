@@ -22,7 +22,7 @@ const jwt = require('jsonwebtoken')
 const secret = "Thisissupposetobesuppersecret"
 
 const setUser = (user)=>{
-    const us = {userName:user.userName,password:user.password}
+    const us = {id:user.id ,userName:user.userName}
     const token = jwt.sign(us,secret);
     return token;
 }

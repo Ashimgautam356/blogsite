@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { GoSearch } from "react-icons/go";
 import { HiMiniBars3CenterLeft } from "react-icons/hi2";
 import { RxCross2 } from "react-icons/rx";
+import { AuthContext } from '../context/authContext';
+
 
 const Navigation = () => {
-    const [userStatus,setUserStatus] = useState(false)
+    const {currentUser,logout} = useContext(AuthContext)
     const [displayMenu, setDisplayMenu]= useState(false)
+
+
   return (
     <div className=' fixed z-20 bg-mainbg text-secondbg flex flex-row  justify-between items-center  w-full h-12'>
         <div className='font-bold text-lg flex flex-row justify-between items-center sm:w-4/12'>
@@ -79,15 +83,16 @@ const Navigation = () => {
         {/* search */}
         <div className='flex flex-row justify-around md:w-1/4 items-center'>
             {
-                userStatus !== true ? (
+                currentUser == null ? (
                 <div>
                     <Link className='p-2' to='/login'>Login</Link>
                     <Link className='p-2' to="/signup">Signup</Link>
                 </div>
                 ) :(
                     <div className='flex flex-row justify-around'>
-                        <h1 className='p-2'>User</h1>
-                        <Link className='p-2'>Logout</Link>
+                        <Link className='p-2' to={'/newPost'}>New Post </Link>
+                        <h1 className='p-2'>{currentUser.userName}</h1>
+                        <Link className='p-2' onClick={()=>{logout()}}>Logout</Link>
                     </div>
                 )
             }

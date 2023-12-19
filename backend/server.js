@@ -3,7 +3,8 @@ const cors = require('cors')
 const app = express(); 
 const postrouter = require('./routes/post')
 const signupRouter = require('./routes/signup')
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
+const upload = require('./middleware/multerSetup');
 // const {restrictToLoggedInUserOnly} = require('./middleware/auth')
 
 
@@ -22,6 +23,14 @@ app.use('/api/user',signupRouter)
 
 app.get('/api',(req,res)=>{
     res.status(200).json("app is running")
+})
+
+app.use('/api/user/posts',postrouter)
+
+
+app.post('/api/uploads',upload.single("file"),(req,res)=>{
+    const file = req.file;
+    res.status(200).json(file.filename)
 })
 
 app.listen(8800,()=>{

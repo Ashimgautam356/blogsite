@@ -13,7 +13,7 @@ import SearchPg from "./pages/SearchPg";
 import Admin from "./pages/Admin";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-
+import NewPost from "./pages/NewPost";
 
 const App = () => {
 
@@ -32,6 +32,7 @@ const App = () => {
               <Route path="/travel" element={<TravelPg></TravelPg>}></Route>
               <Route path="/news" element={<NewsPg></NewsPg>}></Route>
               <Route path="/search" element={<SearchPg></SearchPg>}></Route>
+              <Route path="/newPost" element={<NewPost></NewPost>}></Route>
 
             </Route>
               <Route path="/login" element={<Login></Login>}></Route>

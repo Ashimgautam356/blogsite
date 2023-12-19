@@ -1,29 +1,33 @@
-const db = require('../database')
+const db = require("../database");
+const jwt = require("jsonwebtoken");
+const getPost = (req, res) => {
+  db.query("SELECT * FROM posts", (err, data) => {
+    if (err) {
+      res.status(500).json(err);
+    } else {
+      res.status(200).json(data);
+    }
+  });
+};
 
-const getPost= (req,res)=>{
-    db.query('SELECT * FROM posts',(err,data)=>{
-        if(err){
-            res.status(500).send(err)
-        }else{
-            res.status(200).json(data);
-        }
-    })
-}
+const addPost = (req, res) => {
+  const { title, desc, cat, img, date, userid } = req.body;
 
-const uploadPost = (req, res)=>{
-    const heading = req.body.heading; 
-    const details = req.body.details ;
-    db.query('INSERT INTO posts (id,heading,details,photo) VALUES (?,?,?,?)',[2,heading,details,"photo2"],(err=>{
+  const token = req.cookies.uid;
+  jwt.verify(token, "Thisissupposetobesuppersecret", (err, userInfo) => {
+    if (err) return res.status(403).json("Token is not valid!");
+
+    db.query('INSERT INTO posts (heading,details,photo,date,cate,userId) VALUES (?,?,?,?,?,?)',[title,desc,img,date,cat,userid],(err=>{
         if(err){
-            console.log('error on uploadPost',err)
+            return res.status(500).json(err)
         }else{
-            res.json("post has been created")
+            return res.status(200).json("post has been created")
         }
     }))
-}
-
+  });
+};
 
 module.exports = {
-    getPost,
-    uploadPost
-}
+  getPost,
+  addPost,
+};
