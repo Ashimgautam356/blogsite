@@ -89,7 +89,15 @@ const userLogin = (req, res) => {
   );
 };
 
+const userLogout = (req, res)=>{
+  res.clearCookie('uid',{
+    sameSite:'none',
+    secure:true,
+  }).status(200).json('user has been logged out')
+}
+
 module.exports = {
   userSignup,
-  userLogin
+  userLogin,
+  userLogout
 };

@@ -1,5 +1,7 @@
 const db = require("../database");
 const jwt = require("jsonwebtoken");
+
+
 const getPost = (req, res) => {
   db.query("SELECT * FROM posts", (err, data) => {
     if (err) {

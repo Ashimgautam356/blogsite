@@ -21,10 +21,6 @@ app.use(cors());
 
 app.use('/api/user',signupRouter)
 
-app.get('/api',(req,res)=>{
-    res.status(200).json("app is running")
-})
-
 app.use('/api/user/posts',postrouter)
 
 
