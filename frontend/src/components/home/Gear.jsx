@@ -36,24 +36,24 @@ const Gear = () => {
         <div className='flex md:flex-row sm:flex-col w-full justify-between h-full '>
             <div className='sm:w-full w-3/5 relative sm:mb-10 min-h-full'>
                 <h1 className='absolute z-10 font-semibold text-4xl text-white top-3/4 sm:text-xl pl-2'>
-                    {g[0].heading}
+                    {g[0]?.heading}
                 </h1>
-                <img src={`../upload/${g[0].photo}`} alt="" className='w-full min-h-full object-cover object-center brightness-75' />
+                <img src={`../upload/${g[0]?.photo}`} alt="" className='w-full min-h-full object-cover object-center brightness-75' />
             </div>
             <div className= 'flex flex-col sm:w-full w-2/6'>
                 {
                     g.map((post,index)=>{
                        return (index !== 0 ?
-                            <Link className='flex flex-row w-full justify-between mb-10'>
+                            <Link to={`/${post.cate}/${index}`} className='flex flex-row w-full justify-between mb-10'>
                                 <div className='w-3/5 min-h-full'>
-                                    <img src={`../upload/${post.photo}`} alt="" className='h-full' />
+                                    <img src={`../upload/${post?.photo}`} alt="" className='h-full' />
                                 </div>
                                 <div className='w-2/6'>
                                     <h2 className='mb-3 text-red-800 font-semibold'>
-                                    <Link>News</Link>
+                                    <Link to={`/${post.cate}/${index}`}>News</Link>
                                     </h2>
                                     <h1 className='text-sm'>
-                                    <Link>{post.heading}</Link>
+                                    <Link to={`/${post.cate}/${index}`}>{post?.heading}</Link>
                                     </h1>
                                 </div>
                             </Link>

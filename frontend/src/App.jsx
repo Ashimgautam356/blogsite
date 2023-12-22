@@ -14,6 +14,7 @@ import Admin from "./pages/Admin";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NewPost from "./pages/NewPost";
+import SinglePost from "./pages/SinglePost";
 
 const App = () => {
 
@@ -23,9 +24,7 @@ const App = () => {
 
             <Route path="/" element={<LandingLayout></LandingLayout>}>
               <Route index element={<Home />}></Route>
-              <Route path="/gear" element={<GearLayout></GearLayout>}>
-                <Route index element={<GearPg />}></Route>
-              </Route>
+              <Route path="/gear" element={<GearPg />}></Route>
               <Route path="/food" element={<FoodDrinkPg></FoodDrinkPg>}></Route>
               <Route path="/fitness" element={<HealthFitnessPg></HealthFitnessPg>}></Route>
               <Route path="/style" element={<StylePg></StylePg>}></Route>
@@ -33,6 +32,7 @@ const App = () => {
               <Route path="/news" element={<NewsPg></NewsPg>}></Route>
               <Route path="/search" element={<SearchPg></SearchPg>}></Route>
               <Route path="/newPost" element={<NewPost></NewPost>}></Route>
+              <Route path="/:cate/:id" element={<SinglePost></SinglePost>}></Route>
 
             </Route>
               <Route path="/login" element={<Login></Login>}></Route>
