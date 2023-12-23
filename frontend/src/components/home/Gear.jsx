@@ -35,10 +35,10 @@ const Gear = () => {
         </div>
         <div className='flex md:flex-row sm:flex-col w-full justify-between h-full '>
             <div className='sm:w-full w-3/5 relative sm:mb-10 min-h-full'>
-                <h1 className='absolute z-10 font-semibold text-4xl text-white top-3/4 sm:text-xl pl-2'>
+                <h1 className='absolute z-10 font-semibold  text-4xl text-white top-3/4 sm:text-xl pl-10'>
                     {g[0]?.heading}
                 </h1>
-                <img src={`../upload/${g[0]?.photo}`} alt="" className='w-full min-h-full object-cover object-center brightness-75' />
+                <img src={`../upload/${g[0]?.photo}`} alt="" className='w-full min-h-full object-cover object-center brightness-50' />
             </div>
             <div className= 'flex flex-col sm:w-full w-2/6'>
                 {
@@ -49,10 +49,10 @@ const Gear = () => {
                                     <img src={`../upload/${post?.photo}`} alt="" className='h-full' />
                                 </div>
                                 <div className='w-2/6'>
-                                    <h2 className='mb-3 text-red-800 font-semibold'>
+                                    <h2 className='mb-2 text-red-800 font-semibold text-lg'>
                                     <Link to={`/${post.cate}/${index}`}>News</Link>
                                     </h2>
-                                    <h1 className='text-sm'>
+                                    <h1 className='text-xl font-bold'>
                                     <Link to={`/${post.cate}/${index}`}>{post?.heading}</Link>
                                     </h1>
                                 </div>
