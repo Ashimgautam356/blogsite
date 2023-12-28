@@ -55,7 +55,7 @@ const SinglePost = () => {
     <div className="flex-5">
       <div className="flex flex-col gap-4">
   
-        <img src={`../upload/${post?.img}`} alt="" className="w-full h-72 object-cover" />
+        {/* <img src={`../upload/${post?.img}`} alt="" className="w-full h-72 object-cover" /> */}
   
         <div className="flex items-center gap-4 text-sm">
           {post?.photo && <img src={post?.userImg} alt="" className="w-12 h-12 rounded-full object-cover" />}
@@ -93,7 +93,7 @@ const SinglePost = () => {
   
         <div className="flex flex-col gap-4 post">
   
-          <img src={`../upload/${post?.cat?.img}`} alt="" className="w-full h-48 object-cover" />
+          {/* <img src={`../upload/${post?.cat?.img}`} alt="" className="w-full h-48 object-cover" /> */}
   
           <h2 className="text-gray-700">{post?.cat?.name}</h2>
   
