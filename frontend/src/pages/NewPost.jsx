@@ -7,23 +7,23 @@ import moment from "moment";
 import {AuthContext} from '../context/authContext'
 
 const NewPost = () => {
+  const state = useLocation().state
 
   const {currentUser} = useContext(AuthContext)
 
-  const [value, setValue] = useState( "");
-  const [title, setTitle] = useState( "");
+  const [value, setValue] = useState(state.details|| "");
+  const [title, setTitle] = useState(state.heading|| "");
   const [file, setFile] = useState(null);
-  const [cat, setCat] = useState("");
+  const [cat, setCat] = useState(state.cate||"");
 
   const navigate = useNavigate();
-
-
+  console.log(state)
   const upload = async () => {
 
     try {
       const formData = new FormData();
       formData.append("file", file);
-      const res = await axios.post("/uploads", formData);
+      const res = await axios.post("uploads", formData);
       return res.data;
     } catch (err) {
       console.log(err);
@@ -34,14 +34,15 @@ const NewPost = () => {
     e.preventDefault();
     const imgUrl = await upload();
     try {
-      // state
-      //   ? await axios.put(`/posts/${state.id}`, {
-      //       title,
-      //       desc: value,
-      //       cat,
-      //       img: file ? imgUrl : "",
-      //     })
-      //   : 
+      state
+        ? await axios.put(`/user/posts/edit/${state.id}`, {
+            title:title,
+            desc: value,
+            cat:cat,
+            img: file ? imgUrl : "",
+
+          })
+        : 
           await axios.post(`/user/posts/set`, {
             title:title,
             desc: value,
@@ -62,6 +63,7 @@ const NewPost = () => {
         <div className=" md:col-span-3  sm:mb-20">
           <input
             type="text"
+            value={title}
             placeholder="Title"
             onChange={(e) => setTitle(e.target.value)
             }

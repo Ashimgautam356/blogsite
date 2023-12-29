@@ -26,7 +26,7 @@ app.use('/api/user/posts',postrouter)
 
 app.post('/api/uploads',upload.single("file"),(req,res)=>{
     const file = req.file;
-    res.status(200).json(file.filename)
+    return res.status(200).json(file?.filename)
 })
 
 app.listen(8800,()=>{

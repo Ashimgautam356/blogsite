@@ -19,7 +19,6 @@ const SinglePost = () => {
     const navigate = useNavigate();
   
     const { currentUser,posts } = useContext(AuthContext);
-    console.log(currentUser)
     useEffect(() => {
       const fetchData = async () => {
         try {
@@ -34,7 +33,7 @@ const SinglePost = () => {
 
     const handleDelete = async ()=>{
       try {
-        await axios.delete(`/posts/${id}`);
+        await axios.delete(`/user/posts/delete/${id}`);
         navigate("/")
       } catch (err) {
         console.log(err);
@@ -47,7 +46,6 @@ const SinglePost = () => {
     }
   
     const specificPost = post?.filter(po=> po.cate === category && po.id == id);
-    console.log(specificPost)
     
   return (
     <>
@@ -71,7 +69,7 @@ const SinglePost = () => {
             
                     {currentUser?.id === p.userId&& (
                       <div className="flex gap-2 edit">
-                        <Link to={`/write?edit=2`} state={post}>
+                        <Link to={`/newPost?edit=2`} state={p}>
                           <CiEdit className='w-6 h-6 rounded-full cursor-pointer text-white bg-green-400'></CiEdit>
                         </Link>
                         <MdDelete onClick={handleDelete} className='w-6 h-6 text-white bg-red-500  rounded-full cursor-pointer'></MdDelete>
@@ -92,7 +90,7 @@ const SinglePost = () => {
               <div className="flex-2">
                 <div className="flex flex-col gap-4">
             
-                  <h1 className="text-lg text-gray-700">Categories</h1>
+                  <h1 className="text-lg text-gray-700">Other posts you may like</h1>
                   <div className="flex flex-col gap-4 post">
                   {
                     post?.map(otherPost=>{
