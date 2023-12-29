@@ -4,7 +4,7 @@ const {setUser} = require('../services/auth.js')
 const bcrypt = require('bcryptjs')
 
 const userSignup = async (req, res) => {
-  const { userName, email, password } = req.body;
+  const { userName, email, password,img } = req.body;
   const date = new Date();
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0'); 
@@ -26,8 +26,8 @@ const userSignup = async (req, res) => {
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
 
-    const q = "INSERT INTO users(`userName`,`email`,`password`,`date`) VALUES (?)";
-    const values = [userName, email, hash,formattedDate];
+    const q = "INSERT INTO users(`userName`,`email`,`password`,`date`,`img`) VALUES (?)";
+    const values = [userName, email, hash,formattedDate,img];
 
     db.query(q, [values], (err, data) => {
       if (err) return res.status(500).json(err);

@@ -11,16 +11,30 @@ const Signup = () => {
     const navigate = useNavigate()
     
     
+    const upload = async () => {
+
+        try {
+          const formData = new FormData();
+          formData.append("file", file);
+          const res = await Axios.post("uploads", formData);
+          return res.data;
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+
+
     const submitHandler = async(e)=>{
         e.preventDefault();
-
-        const formdata = new FormData();
-        formdata.append('email', email);
-        formdata.append('userName', userName);
-        formdata.append('password', password);
-        formdata.append('profilePic', file);
+        const imgUrl = await upload();
         try{
-            const response = await Axios.post('user/upload',formdata)
+            const response = await Axios.post('user/upload',{
+                email:email,
+                userName:userName,
+                password:password,
+                img: file? imgUrl: ''
+            })
 
             if(response.data === 'User has been created.'){
             navigate('/login');
@@ -55,7 +69,7 @@ const Signup = () => {
                 </div>
                 <div className='mb-6'>
                     <label htmlFor="file">Profile  </label>
-                    <input type='file' id='profilePic' name='profilePic' accept=".jpg, .png, .jpeg" className='focus:outline-none bg-[rgb(247,120,4)] border border-white rounded-md placeholder-gray-200 p-2 text-gray-200 font-light sm:w-4/6' onChange={(e)=>setFile(e.target.files[0])}></input>
+                    <input type='file' id='profilePic' name='file' accept=".jpg, .png, .jpeg" className='focus:outline-none bg-[rgb(247,120,4)] border border-white rounded-md placeholder-gray-200 p-2 text-gray-200 font-light sm:w-4/6' onChange={(e)=>setFile(e.target.files[0])}></input>
                 </div>
                 <div className='mb-6'>
                     <p className='text-center text-red-800'>{err}</p>

@@ -11,13 +11,12 @@ const NewPost = () => {
 
   const {currentUser} = useContext(AuthContext)
 
-  const [value, setValue] = useState(state.details|| "");
-  const [title, setTitle] = useState(state.heading|| "");
+  const [value, setValue] = useState(state?.details|| "");
+  const [title, setTitle] = useState(state?.heading|| "");
   const [file, setFile] = useState(null);
-  const [cat, setCat] = useState(state.cate||"");
+  const [cat, setCat] = useState(state?.cate||"");
 
   const navigate = useNavigate();
-  console.log(state)
   const upload = async () => {
 
     try {

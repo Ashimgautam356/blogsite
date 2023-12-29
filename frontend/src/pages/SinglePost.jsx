@@ -46,13 +46,14 @@ const SinglePost = () => {
     }
   
     const specificPost = post?.filter(po=> po.cate === category && po.id == id);
-    
+    const reversed = post?.filter(p => p.cate === category).reverse()
+
   return (
     <>
       {
           specificPost?.map(p=>{
             return(
-              <div className="flex gap-8 pt-16">
+              <div className="flex gap-8 pt-16" key={p.id}>
 
               <div className="flex-5">
                 <div className="flex flex-col gap-4">
@@ -60,7 +61,7 @@ const SinglePost = () => {
                   <img src={`/upload/${p?.photo}`} alt="" className="w-full h-72 object-cover" />
             
                   <div className="flex items-center gap-4 text-sm">
-                    {p?.photo && <img src={post?.userImg} alt="" className=" border border-black w-12 h-12 rounded-full object-cover" />}
+                    {p?.photo && <img src={`/upload/${currentUser?.img}`} alt="" className=" border border-black w-12 h-12 rounded-full object-cover" />}
             
                     <div className="info">
                       <span className="font-bold">{currentUser?.userName}</span>
@@ -91,22 +92,19 @@ const SinglePost = () => {
                 <div className="flex flex-col gap-4">
             
                   <h1 className="text-lg text-gray-700">Other posts you may like</h1>
-                  <div className="flex flex-col gap-4 post">
+                  <div className="flex flex-col gap-4">
                   {
-                    post?.map(otherPost=>{
+                    reversed.map(otherPost=>{
                       return(
-                        otherPost.cate === category && otherPost.id != id ? 
-                        <>
+                        <div key={otherPost.id}>
                           <img src={`/upload/${otherPost?.photo}`} alt="" className="w-full h-48 object-cover" />
                   
-                          <h2 className="text-gray-700">{otherPost?.heading}</h2>
+                          <h2 className="text-gray-700" >{otherPost?.heading}</h2>
                   
-                          <button className="w-max-content px-4 py-2 border border-teal-500 text-teal-500 hover:border-white hover:bg-teal-500 hover:text-black">
+                          <button  className="w-max-content px-4 py-2 border border-teal-500 text-teal-500 hover:border-white hover:bg-teal-500 hover:text-black">
                             Read More
                           </button>
-                        </>
-                  :
-                  ''
+                        </div>
                   )
                 })
                 

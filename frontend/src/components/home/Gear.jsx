@@ -24,7 +24,7 @@ const Gear = () => {
     }, [posts]);
 
     // rending only the gear posts 
-    const g = gearPosts.filter(post => post.cate === 'gear' )
+    const g = gearPosts.filter(post => post.cate === 'gear' ).reverse().slice(0,4)
 
   return (
     <div className=' flex flex-col sm:w-5/6 p-5 w-4/6 relative h-full'>
