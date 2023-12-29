@@ -30,21 +30,21 @@ const Gear = () => {
     <div className=' flex flex-col sm:w-5/6 p-5 w-4/6 relative h-full'>
         <div className='w-full font-medium text-3xl mb-4 h-5/6'>
             <h1>
-                <Link>Gear</Link>
+                <Link to={'gear'}>Gear</Link>
             </h1>
         </div>
         <div className='grid md:grid-rows-3 grid-cols-3 gap-10  w-full justify-between h-full '>
             {
                 g.map((post,index)=>{
                     return ( index === 0 ? 
-                    <div className='md:row-span-3 col-span-2 sm:col-span-3  sm:w-full  sm:mb-10 min-h-full' key={index}>
-                        <h1 className='absolute  z-10 font-semibold text-4xl text-white top-1/4 sm:text-xl pl-2'>
+                    <Link className='md:row-span-3 col-span-2 sm:col-span-3  sm:w-full  sm:mb-10 min-h-full' key={index} to={`${post.cate}/${post.id}`}>
+                        <h1 className='absolute  z-10 font-semibold text-4xl text-white sm:top-1/4 top-3/4 sm:text-xl pl-2'>
                             {post?.heading}
                         </h1>
                         <img src={`upload/${post?.photo}`} alt="" className='w-full min-h-full object-cover object-center brightness-75' />
-                    </div>
+                    </Link>
                 :
-                <Link className='md:row-span-1 col-span-1 sm:col-span-3 flex flex-row w-full justify-between mb-10' key={index}>
+                <Link className='md:row-span-1 col-span-1 sm:col-span-3 flex flex-row w-full justify-between mb-10' key={index} to={`${post.cate}/${post.id}`}>
                     <div className='w-3/5 min-h-full'>
                         <img src={`upload/${post.photo}`} alt="" className='h-full' />
                     </div>

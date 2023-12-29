@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { createContext , useState } from 'react'
-import Axios from 'axios'
+import Axios, { AxiosHeaders } from 'axios'
 
 export const AuthContext = createContext()
 
@@ -25,7 +25,7 @@ export const AuthContextProvider = ({children})=>{
 
     // for geting post 
     const posts = async()=>{
-         return await Axios.get('user/posts/fetch').then(response => response.data);
+         return await Axios.get('/user/posts/fetch').then(response => response.data);
                  
     }
 
