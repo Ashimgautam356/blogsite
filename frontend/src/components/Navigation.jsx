@@ -15,7 +15,7 @@ const Navigation = () => {
     <div className=' fixed z-20 bg-mainbg text-secondbg flex flex-row  justify-between items-center  w-full h-12'>
         <div className='font-bold text-lg flex flex-row justify-between items-center sm:w-4/12'>
         <div className='md:hidden'>
-            <button onClick={()=>{setDisplayMenu(true)}}>
+            <button onClick={()=>{setDisplayMenu(true)}} className='p-2 mr-1'>
             <HiMiniBars3CenterLeft></HiMiniBars3CenterLeft>
             </button>
             {
@@ -65,8 +65,8 @@ const Navigation = () => {
                 )
             }
         </div>
-           <Link to="/">
-            <h1 className='ml-10'>JOURNAL</h1>
+           <Link to="/" className='w-fit md:ml-6'>
+            <h1 className=''>JOURNAL</h1>
            </Link>
         </div>
         <div className='w-3/6 h-full sm:hidden'>
@@ -81,7 +81,7 @@ const Navigation = () => {
         </div>
 
         {/* search */}
-        <div className='flex flex-row justify-around md:w-1/4 items-center'>
+        <div className='flex flex-row justify-end md:w-1/4 sm:w-5/6  items-center '>
             {
                 currentUser == null ? (
                 <div>
@@ -89,14 +89,14 @@ const Navigation = () => {
                     <Link className='p-2' to="/signup">Signup</Link>
                 </div>
                 ) :(
-                    <div className='flex flex-row justify-around'>
-                        <Link className='p-2' to={'/newPost'}>New Post </Link>
-                        <h1 className='p-2'>{currentUser.userName}</h1>
-                        <Link className='p-2' onClick={()=>{logout()}}>Logout</Link>
+                    <div className='flex flex-row justify-around items-center flex-wrap w-5/6'>
+                        <Link className='text-xs' to={'/newPost'}>New Post </Link>
+                        <h1 className='text-xs'>{currentUser.userName}</h1>
+                        <Link className='text-xs' onClick={()=>{logout()}}>Logout</Link>       
                     </div>
                 )
             }
-            <Link to="search" className='text-xl font-semibold'><GoSearch></GoSearch></Link>
+            <Link to="search" className='text-xl font-semibold p-2 md:mr-4'><GoSearch></GoSearch></Link>
         </div>
     </div>
   )
