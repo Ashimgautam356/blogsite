@@ -53,11 +53,11 @@ const SinglePost = () => {
       {
           specificPost?.map(p=>{
             return(
-              <div className='border border-black flex flex-col items-center w-full' key={p.key}>
-                  <div className="flex gap-8 pt-16 w-3/4" >
-
-                  <div className="flex-5 border border-black w-4/5">
-                    <div className="flex flex-col gap-4 border border-black w-full">
+              <div className=' flex flex-col items-center w-full pt-16' key={p.key}>
+                
+                <div className='grid grid-cols-4 gap-10 w-4/5'>
+                  <div className="md:col-span-3 sm:col-span-4 b w-full">
+                    <div className="flex flex-col gap-4 border  w-full">
 
                       <img src={`/upload/${p?.photo}`} alt="" className="w-full min-h-contain object-cover object-center" />
 
@@ -89,14 +89,14 @@ const SinglePost = () => {
                     </div>
                   </div>
 
-                  <div className="flex-2 border border-black w-1/3">
+                  <div className="md:col-span-1 sm:col-span-4 w-full">
                     <div className="flex flex-col gap-4">
 
                       <h1 className="text-2xl font-bold text-gray-700 mb-5">Other posts you may like</h1>
                       {
                         reversed.map(otherPost=>{
                           return(
-                            <div className="flex flex-col gap-4 border border-black" key={otherPost.id}>
+                            <div className="flex flex-col gap-4 " key={otherPost.id}>
                               <img src={`/upload/${otherPost?.photo}`} alt="" className="w-full h-48 object-cover object-center" />
                       
                               <h2 className="text-gray-700" >{otherPost?.heading}</h2>
@@ -111,8 +111,7 @@ const SinglePost = () => {
                   }                  
                     </div>
                   </div>
-
-                  </div>
+                </div>
               </div>
               
             )

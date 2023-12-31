@@ -89,10 +89,10 @@ const Navigation = () => {
                     <Link className='p-2' to="/signup">Signup</Link>
                 </div>
                 ) :(
-                    <div className='flex flex-row justify-around items-center flex-wrap w-5/6'>
-                        <Link className='text-xs' to={'/newPost'}>New Post </Link>
-                        <h1 className='text-xs'>{currentUser.userName}</h1>
-                        <Link className='text-xs' onClick={()=>{logout()}}>Logout</Link>       
+                    <div className='flex flex-row justify-around items-center flex-wrap w-5/6 text-xs md:text-lg'>
+                        <Link className='' to={'/newPost'}>New Post </Link>
+                        <h1 className=''>{currentUser.userName}</h1>
+                        <Link className='' onClick={()=>{logout()}}>Logout</Link>       
                     </div>
                 )
             }
