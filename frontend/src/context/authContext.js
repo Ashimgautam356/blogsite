@@ -23,10 +23,29 @@ export const AuthContextProvider = ({children})=>{
         
     }
 
-    // for geting post 
+    // for geting all post 
     const posts = async()=>{
          return await Axios.get('/user/posts/fetch').then(response => response.data);
                  
+    }
+
+    // for making banner
+    const makeBanner = async(postId)=>{
+        return await Axios.put('/admin/makingbanner',postId)
+    }
+
+    // for removing banner
+    const removingBanner =async(postId)=>{
+        return await Axios.put("/admin/removingbanner",postId)
+    }
+
+    // for making editor Choice
+    const makingEditorChoice =async(postId)=>{
+        return await Axios.put("/admin/makingEditorChoice",postId)
+    }
+    // for removing banner
+    const removingEditorChoice =async(postId)=>{
+        return await Axios.put("/admin/removingEditorChoice",postId)
     }
 
 
@@ -38,6 +57,6 @@ export const AuthContextProvider = ({children})=>{
 
 
     return (
-        <AuthContext.Provider value={{currentUser,login,logout,posts}}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{currentUser,login,logout,posts,makeBanner,removingBanner,makingEditorChoice,removingEditorChoice}}>{children}</AuthContext.Provider>
     )
 }

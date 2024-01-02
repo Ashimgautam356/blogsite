@@ -33,11 +33,11 @@ const App = () => {
               <Route path="/search" element={<SearchPg></SearchPg>}></Route>
               <Route path="/newPost" element={<NewPost></NewPost>}></Route>
               <Route path="/:category/:id" element={<SinglePost></SinglePost>}></Route>
+              <Route path="/admin" element={<Admin></Admin>}></Route>
 
             </Route>
               <Route path="/login" element={<Login></Login>}></Route>
               <Route path="/signup" element={<Signup></Signup>}></Route>
-              <Route path="/admin" element={<Admin></Admin>}></Route>
 
           </Routes>
       </BrowserRouter>

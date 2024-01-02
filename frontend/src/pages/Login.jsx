@@ -31,7 +31,7 @@ const Login = () => {
     <div className='bg-[rgb(247,120,4)] relative flex flex-row justify-center items-center w-full h-screen'>
 
     <div className='flex flex-col md:w-2/4 sm:w-5/6 relative items-center border border-white text-white md:text-2xl sm:text-lg font-medium rounded-lg'>
-        <h1 className='text-white text-3xl font-medium text-center m-10'>Signup!</h1>
+        <h1 className='text-white text-3xl font-medium text-center m-10'>Login!</h1>
         <form action="/login" method='POST' className='sm:w-full' onSubmit={submitHandler}>
             <div className='mb-6'>
                 <label htmlFor="userName">UserName:-   </label>

@@ -5,6 +5,7 @@ const postrouter = require('./routes/post')
 const signupRouter = require('./routes/signup')
 const cookieParser = require('cookie-parser');
 const upload = require('./middleware/multerSetup');
+const adminrouter = require('./routes/admin')
 // const {restrictToLoggedInUserOnly} = require('./middleware/auth')
 
 
@@ -23,6 +24,7 @@ app.use('/api/user',signupRouter)
 
 app.use('/api/user/posts',postrouter)
 
+app.use('/api/admin',adminrouter)
 
 app.post('/api/uploads',upload.single("file"),(req,res)=>{
     const file = req.file;
