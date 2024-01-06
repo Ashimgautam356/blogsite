@@ -1,30 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react'
-import test1 from '../../images/test1.jpg'
+import React from 'react'
 import {Link} from 'react-router-dom'
-import {AuthContext} from '../../context/authContext'
 import DOMPurify from "dompurify";
 
 
-const EditorsPick = () => {
-    const {posts} = useContext(AuthContext)
-
-    // getting the post in the useStack for filtering the banners
-    const [editorPost,setEditorPost] = useState([])
-
-    useEffect(()=>{
-        const fetching = async ()=>{
-            try{
-                const respon = await posts();
-                setEditorPost(respon)
-            }
-            catch(err){
-                console.log(err)
-            }
-        }
-        fetching();
-    },[posts])
-    
-    const fourPost = editorPost?.filter(post=> post.credit ===1)
+const EditorsPick = ({props}) => {
   return (
     <div className=' flex flex-col sm:w-5/6 p-5 w-4/6 h-5/6'>
         <div className=' w-full font-medium text-3xl mb-4'>
@@ -33,7 +12,7 @@ const EditorsPick = () => {
         <div className=' flex flex-row w-full sm:flex-col justify-between'>
 
             {
-                fourPost.map(post=>{
+                props?.map(post=>{
                     return(
                         <Link className=' md:w-3/12 sm:mt-7' key={post.id}>
                         <div className=' flex flex-col  w-full'>

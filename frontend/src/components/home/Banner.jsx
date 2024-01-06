@@ -1,30 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
-import test1 from '../../images/test1.jpg'
-import {AuthContext} from '../../context/authContext'
+import React from 'react'
 import DOMPurify from "dompurify";
 
 
-const Banner = () => {
-  // for getting all the post
-  const [allpost,setAllpost] = useState([]);
-
-
-  const {posts} = useContext(AuthContext)
-
-  useEffect(()=>{
-    const fetching = async()=>{
-      const resp = await posts();
-      setAllpost(resp)
-    };
-    fetching()
-  },[])
-
-    const bannerPost = allpost?.filter(post=> post.credit ===2)
-    console.log(bannerPost)
+const Banner = ({props}) => {
   return (
     <>
     {
-      bannerPost?.map(post=>{
+      props?.map(post=>{
         return(
           <div className=' sm:w-5/6 sm:flex-col sm:h-4/6  p-5 w-4/6 flex flex-row h-3/6' key={post.id}>
 
