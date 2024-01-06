@@ -16,13 +16,13 @@ const getPost = (req, res) => {
 
 // addPost
 const addPost = (req, res) => {
-  const { title, desc, cat, img, date, userid } = req.body;
-
+  const { title, desc, cat, img, date, userid,username } = req.body;
   const token = req.cookies.uid;
-  jwt.verify(token, "Thisissupposetobesuppersecret", (err, userInfo) => {
+  if (!token) return res.status(401).json("user not authenticated")
+   jwt.verify(token, "Thisissupposetobesuppersecret", (err, userInfo) => {
     if (err) return res.status(403).json("Token is not valid!");
 
-    db.query('INSERT INTO posts (heading,details,photo,date,cate,userId) VALUES (?,?,?,?,?,?)',[title,desc,img,date,cat,userid],(err=>{
+    db.query('INSERT INTO posts (heading,details,photo,date,cate,userId,credit,userName) VALUES (?,?,?,?,?,?,?,?)',[title,desc,img,date,cat,userid,0,username],(err=>{
         if(err){
             return res.status(500).json(err)
         }else{
@@ -58,11 +58,10 @@ const deletePost = (req,res)=>{
   jwt.verify(token,"Thisissupposetobesuppersecret",(err,userInfo)=>{
     if(err) return res.status(500).json('Token not valid')
 
-    const postId = req.params.id;
-    
-    const q = "DELETE FROM posts WHERE `id` = ? AND `userId` = ?";
+    const id = req.body.postId.id;
+    const q = "DELETE FROM posts WHERE `id` = ?";
 
-    db.query(q,[postId,userInfo.id],(err,result)=>{
+    db.query(q,[id],(err,result)=>{
       if(err) return res.status(500).json(err);
       return res.status(200).json("Post has been deleted")
     })

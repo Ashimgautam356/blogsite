@@ -1,6 +1,5 @@
-import React, { useContext,useState,useEffect } from 'react'
-import test65 from '../../images/test65.jpg'
 import { Link } from 'react-router-dom'
+import React, { useContext,useState,useEffect } from 'react'
 import {AuthContext} from '../../context/authContext'
 
 
@@ -38,21 +37,21 @@ const Gear = () => {
                 g.map((post,index)=>{
                     return ( index === 0 ? 
                     <Link className=' relative md:row-span-3 col-span-2 sm:col-span-3  sm:w-full  sm:mb-10 min-h-full ' key={index} to={`${post.cate}/${post.id}`}>
-                        <h1 className='absolute  z-10 font-semibold text-5xl drop-shadow-[0_1px_5px_rgba(255,255,255,0.50)] text-white bottom-1/4 min-h-max sm:text-xl pl-2'>
+                        <img src={`upload/${post?.photo}`} alt="" className='w-full min-h-full object-cover object-center brightness-50 ' />
+                        <h1 className='absolute  z-10 font-semibold text-5xl drop-shadow-[0_1px_5px_rgba(255,255,255,0.50)] text-white bottom-5 sm:bottom-3 min-h-max sm:text-xl pl-2'>
                             {post?.heading}
                         </h1>
-                        <img src={`upload/${post?.photo}`} alt="" className='w-full min-h-full object-cover object-center brightness-50 grayscale hover:grayscale-0' />
                     </Link>
                 :
                 <Link className='md:row-span-1 col-span-1 sm:col-span-3 flex flex-row w-full justify-between mb-10' key={index} to={`${post.cate}/${post.id}`}>
                     <div className='w-3/5 min-h-full'>
-                        <img src={`upload/${post.photo}`} alt="" className='h-full object-cover object-center  grayscale hover:grayscale-0' />
+                        <img src={`upload/${post.photo}`} alt="" className='h-full object-cover object-center ' />
                     </div>
-                    <div className='w-2/6'>
+                    <div className='w-2/6 '>
                         <h2 className='mb-3 text-red-800 font-semibold'>
                         <Link>News</Link>
                         </h2>
-                        <h1 className='text-sm'>
+                        <h1 className='text-xs w-full  overflow-hidden whitespace-wrap '>
                         <Link>{post.heading}</Link>
                         </h1>
                     </div>

@@ -6,7 +6,7 @@ import axios from 'axios'
 const Admin = () => {
     
     const navigate = useNavigate()
-    const {currentUser,posts,makeBanner,removingBanner,makingEditorChoice,removingEditorChoice } = useContext(AuthContext)
+    const {currentUser,removing,posts,makeBanner,removingBanner,makingEditorChoice,removingEditorChoice } = useContext(AuthContext)
     const [allPost ,setAllPost] = useState()
     
     
@@ -16,7 +16,7 @@ const Admin = () => {
 
     useEffect(()=>{
         !currentUser?.typeOfUser && navigate("/login")
-        currentUser.typeOfUser !== "admin" && navigate("/")
+        currentUser?.typeOfUser !== "admin" && navigate("/")
         
         const fetchpost = async ()=>{
             try{
@@ -64,7 +64,13 @@ const Admin = () => {
     
     // handling delete
     const handleDelete = async(id)=>{
-
+        try{
+            const response = await removing({id},(err)=>{
+                err && console.log(err)
+            })
+        }catch(err){
+            console.log(err)
+        }
     }
 
     // deleting all the posts.
@@ -95,11 +101,6 @@ const Admin = () => {
   return (
     <div className='pt-16 flex flex-row justify-center items-center w-full'>
       <div className='relative flex flex-col items-center sm:w-5/6 p-5 w-4/6 h-3/6 mb-20'>
-        <div>
-            <h1>{totalCredit}</h1>
-            <h2>{banner?1:0}</h2>
-            <h3 onClick={deleteAll}>delete all</h3>
-        </div>
         <div className=' relative grid grid-cols-2 mb-10'>
  
             {
@@ -113,20 +114,20 @@ const Admin = () => {
                             <h1 className='font-bold text-2xl pb-2 sm:text-xl'>{post.heading}</h1>
                             <h2 className='relative overflow-hidden whitespace-nowrap text-ellipsis '>{post.details}</h2>
                         </div>
-                        <div>
+                        <div className='flex flex-col '>
                             {
                                 post.credit == 0 ?
                                 <>
-                                <button onClick={()=>handelChoice(post.id)}>Editor's Choice</button>
-                                <button onClick={()=>handleBanner(post.id)}>Banner</button>
+                                <button onClick={()=>handelChoice(post.id)} className='w-full  text-sm p-2 mb-2 bg-green-500 text-white font-medium rounded-md'>Editor's Choice</button>
+                                <button onClick={()=>handleBanner(post.id)} className='w-full  text-sm p-2 mb-2 bg-orange-500 text-white font-medium rounded-sm'>Banner</button>
                                 </>: post.credit == 1 ?
                                 <>
-                                    <button onClick={()=>decreasingChoice(post.id)}>Remove editor choice</button>
-                                    <button onClick={()=>handleBanner(post.id)}>Banner</button>
+                                    <button onClick={()=>decreasingChoice(post.id)} className='w-full  text-sm p-2 mb-2 bg-yellow-500 text-white font-medium rounded-md'>Remove editor choice</button>
+                                    <button onClick={()=>handleBanner(post.id)}  className='w-full  text-sm p-2 mb-2 bg-orange-500 text-white font-medium rounded-md'>Banner</button>
                                 </>:
-                                 <button onClick={()=>decreasingBanner(post.id)}>Remove Banner</button>
+                                 <button onClick={()=>decreasingBanner(post.id)} className='w-full  text-sm p-2 mb-2 bg-blue-500 text-white font-medium rounded-md'>Remove Banner</button>
                             }
-                            <button onClick={()=>handleDelete(post.id)}>Delete</button>
+                            <button onClick={()=>handleDelete(post.id)} className='w-full  text-sm p-2 mb-2 bg-red-500 text-white font-medium rounded-md'>Delete</button>
                         </div>
                     </div>
                     )

@@ -41,18 +41,22 @@ const NewPost = () => {
             img: file ? imgUrl : "",
 
           })
-        : 
+          // navigate("/")
+        :   
           await axios.post(`/user/posts/set`, {
             title:title,
             desc: value,
-            cat: cat,
+            cat: cat !==''? cat:'news',
             img: file ? imgUrl : "",
             date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
             userid: currentUser.id,
+            username:currentUser.userName
+          },(err)=>{
+            if(err)return console.log(err)
           })
           navigate('/');
     } catch (err) {
-      console.log(err);
+      if(err.response.data ==="user not authenticated") return navigate('/login')
     }
   };
 
@@ -64,6 +68,7 @@ const NewPost = () => {
             type="text"
             value={title}
             placeholder="Title"
+            required
             onChange={(e) => setTitle(e.target.value)
             }
             className="w-full mb-10 text-2xl p-2 border border-gray-300 rounded"
@@ -93,6 +98,7 @@ const NewPost = () => {
               type="file"
               id="file"
               name="file"
+              required
               accept=".jpg,.jpeg,.png"
               onChange={(e) => setFile(e.target.files[0])}
             />
@@ -101,7 +107,7 @@ const NewPost = () => {
             </label>
             <div className="flex flex-row justify-between p-4">
               <button className="border border-black pr-4 pl-4 text-green-600">Save as a draft</button>
-              <button onClick={handleClick}  className="bg-green-600 pr-4 pl-4 text-white" >Publish</button>
+              <button onClick={(e)=>handleClick(e)}  className="bg-green-600 pr-4 pl-4 text-white" >Publish</button>
             </div>
           </div>
           <div className="border border-gray-300">

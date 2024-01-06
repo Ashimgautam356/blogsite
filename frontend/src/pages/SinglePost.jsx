@@ -9,6 +9,7 @@ import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
 const SinglePost = () => {
 
+  // username of the post is same as the login id .
     const{category,id} = useParams()
 
     
@@ -18,7 +19,7 @@ const SinglePost = () => {
     // const location = useLocation();
     const navigate = useNavigate();
   
-    const { currentUser,posts } = useContext(AuthContext);
+    const { currentUser,posts,removing } = useContext(AuthContext);
     useEffect(() => {
       const fetchData = async () => {
         try {
@@ -31,9 +32,11 @@ const SinglePost = () => {
       fetchData();
     }, [id]);
 
-    const handleDelete = async ()=>{
+    const handleDelete = async (id)=>{
       try {
-        await axios.delete(`/user/posts/delete/${id}`);
+        const respon = await removing({id},(err)=>{
+          err && console.log(err)
+        });
         navigate("/")
       } catch (err) {
         console.log(err);
@@ -53,7 +56,7 @@ const SinglePost = () => {
       {
           specificPost?.map(p=>{
             return(
-              <div className=' flex flex-col items-center w-full pt-16' key={p.key}>
+              <div className=' flex flex-col items-center w-full pt-16 mb-20' key={p.key}>
                 
                 <div className='grid grid-cols-4 gap-10 w-4/5'>
                   <div className="md:col-span-3 sm:col-span-4 b w-full">
@@ -65,16 +68,17 @@ const SinglePost = () => {
                         {p?.photo && <img src={`/upload/${currentUser?.img}`} alt="" className="w-14 h-14 rounded-full object-cover object-center" />}
 
                         <div className="info">
-                          <span className="font-bold">{currentUser?.userName}</span>
+                          <span className="font-bold">{p?.userName}</span>
                           <p>Posted {moment(p?.date).fromNow()}</p>
                         </div>
 
-                        {currentUser?.id === p.userId&& (
+                        {currentUser?.id === p.userId &&(
+                         
                           <div className="flex gap-2 edit">
                             <Link to={`/newPost?edit=2`} state={p}>
                               <CiEdit className='w-6 h-6 rounded-full cursor-pointer text-white bg-green-400'></CiEdit>
                             </Link>
-                            <MdDelete onClick={handleDelete} className='w-6 h-6 text-white bg-red-500  rounded-full cursor-pointer'></MdDelete>
+                            <MdDelete onClick={()=>handleDelete(p.id)} className='w-6 h-6 text-white bg-red-500  rounded-full cursor-pointer'></MdDelete>
                       
                           </div>
                         )}
@@ -84,7 +88,7 @@ const SinglePost = () => {
 
                       <p dangerouslySetInnerHTML={{
                         __html: DOMPurify.sanitize(p?.details),
-                      }}></p>
+                      }} className='p-4'></p>
 
                     </div>
                   </div>
@@ -101,9 +105,9 @@ const SinglePost = () => {
                       
                               <h2 className="text-gray-700" >{otherPost?.heading}</h2>
                       
-                              <button  className="w-max-content px-4 py-2 border border-teal-500 text-teal-500 hover:border-white hover:bg-teal-500 hover:text-black">
+                              <Link  className="text-center w-max-content px-4 py-2 border border-teal-500 text-teal-500 hover:border-white hover:bg-teal-500 hover:text-black" to={`/${otherPost.cate}/${otherPost.id}`} >
                                 Read More
-                              </button>
+                              </Link>
                             </div>
                       )
                     })

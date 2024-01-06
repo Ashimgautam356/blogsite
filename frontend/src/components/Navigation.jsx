@@ -23,7 +23,7 @@ const Navigation = () => {
                     <div className='w-full h-screen flex flex-col items-center bg-mainbg absolute top-0 left-0 p-5'>
                         <div className='w-full h-10 flex flex-row justify-between items-center border-b border-white'>
                             <div>
-                                <h1 className='text-3xl font-medium pl-10'>JOURNAL</h1>
+                                <Link className='text-3xl font-medium pl-10' onClick={()=>setDisplayMenu(false)}>JOURNAL</Link>
                             </div>
                             <div className='text-2xl'>
                                 <button onClick={()=>{setDisplayMenu(false)}}>
@@ -33,32 +33,32 @@ const Navigation = () => {
                         </div>
                         <div className='flex flex-col items-center border-r border-l border-white w-full  mt-7 text-xl font-thin '>
                             <h2 className=''>
-                                <Link to="/gear" >Gear</Link>
+                                <Link to="/gear" onClick={()=>setDisplayMenu(false)}>Gear</Link>
                             </h2>
                         </div>
                         <div className='flex flex-col items-center border-r border-l border-white w-full  mt-7 text-xl font-thin '>
                             <h2 className=''>
-                                <Link to="/fitness">Healt & Fitness</Link>
+                                <Link to="/fitness" onClick={()=>setDisplayMenu(false)}>Healt & Fitness</Link>
                             </h2>
                         </div>
                         <div className='flex flex-col items-center border-r border-l border-white w-full  mt-7 text-xl font-thin '>
                             <h2 className=''>
-                                <Link to="food">Food & Drink</Link>
+                                <Link to="food" onClick={()=>setDisplayMenu(false)}>Food & Drink</Link>
                             </h2>
                         </div>
                         <div className='flex flex-col items-center border-r border-l border-white w-full  mt-7 text-xl font-thin '>
                             <h2 className=''>
-                                <Link to="style">Style</Link>
+                                <Link to="style" onClick={()=>setDisplayMenu(false)}>Style</Link>
                             </h2>
                         </div>
                         <div className='flex flex-col items-center border-r border-l border-white w-full  mt-7 text-xl font-thin '>
                             <h2 className=''>
-                                <Link to="travel">Travel</Link>
+                                <Link to="travel" onClick={()=>setDisplayMenu(false)}>Travel</Link>
                             </h2>
                         </div>
                         <div className='flex flex-col items-center border-r border-l border-white w-full  mt-7 text-xl font-thin '>
                             <h2 className=''>
-                                <Link to="news">News</Link>
+                                <Link to="news" onClick={()=>setDisplayMenu(false)}>News</Link>
                             </h2>
                         </div>
                     </div>

@@ -27,7 +27,7 @@ const userSignup = async (req, res) => {
     const hash = bcrypt.hashSync(password, salt);
 
     const q = "INSERT INTO users(`userName`,`email`,`password`,`date`,`img`,`typeOfUser`) VALUES (?)";
-    const values = [userName, email, hash,formattedDate,img,"admin"];
+    const values = [userName, email, hash,formattedDate,img,"user"];
     db.query(q, [values], (err, data) => {
       if (err) return res.status(500).json(err);
       return res.status(200).json("User has been created.");

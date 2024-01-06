@@ -1,9 +1,27 @@
-import React from 'react'
-import test9 from '../../images/test9.jpg'
 import { Link } from 'react-router-dom'
+import React, { useContext,useState,useEffect } from 'react'
+import {AuthContext} from '../../context/authContext'
 
 
 const FoodDrink = () => {
+    const { posts } = useContext(AuthContext);
+    const [gearPosts, setGearPosts] = useState([]);
+  
+    useEffect(() => {
+      const fetchPosts = async () => {
+        try {
+          const fetchedPosts = await posts();
+          setGearPosts(fetchedPosts);
+        } catch (error) {
+          console.error('Error fetching posts:', error);
+        }
+      };
+  
+      fetchPosts();
+    }, [posts]);
+
+    // rending only the gear posts 
+    const g = gearPosts.filter(post => post.cate === 'Food & Drink' ).reverse().slice(0,4)
   return (
     <div className=' flex flex-col sm:w-5/6 p-5 w-4/6 relative h-full'>
     <div className='w-full font-medium text-3xl mb-4 h-5/6'>
@@ -11,53 +29,33 @@ const FoodDrink = () => {
             <Link>Food and Drink</Link>
         </h1>
     </div>
-    <div className='flex md:flex-row sm:flex-col w-full justify-between h-full '>
-        <div className='sm:w-full w-3/5 relative sm:mb-10 min-h-full'>
-            <h1 className='absolute z-10 font-semibold text-4xl text-white top-3/4 sm:text-xl pl-2' >This is the heading of the image</h1>
-            <img src={test9} alt="" className='w-full min-h-full object-cover object-center brightness-75'/>
+    <div className='grid md:grid-rows-3 grid-cols-3 gap-10  w-full justify-between h-full '>
+            {
+                g.map((post,index)=>{
+                    return ( index === 0 ? 
+                    <Link className=' relative md:row-span-3 col-span-2 sm:col-span-3  sm:w-full  sm:mb-10 min-h-full ' key={index} to={`${post.cate}/${post.id}`}>
+                        <img src={`upload/${post?.photo}`} alt="" className='w-full min-h-full object-cover object-center brightness-50 ' />
+                        <h1 className='absolute  z-10 font-semibold text-5xl drop-shadow-[0_1px_5px_rgba(255,255,255,0.50)] text-white bottom-5 sm:bottom-3 min-h-max sm:text-xl pl-2'>
+                            {post?.heading}
+                        </h1>
+                    </Link>
+                :
+                <Link className='md:row-span-1 col-span-1 sm:col-span-3 flex flex-row w-full justify-between mb-10' key={index} to={`${post.cate}/${post.id}`}>
+                    <div className='w-3/5 min-h-full'>
+                        <img src={`upload/${post.photo}`} alt="" className='h-full object-cover object-center ' />
+                    </div>
+                    <div className='w-2/6 '>
+                        <h2 className='mb-3 text-red-800 font-semibold'>
+                        <Link>News</Link>
+                        </h2>
+                        <h1 className='text-xs w-full  overflow-hidden whitespace-wrap '>
+                        <Link>{post.heading}</Link>
+                        </h1>
+                    </div>
+                </Link>)
+                })  
+            }
         </div>
-        <div className='flex flex-col sm:w-full w-2/6 '>
-            <Link className='flex flex-row w-full   justify-between mb-10'>
-                <div className='w-3/5 min-h-full  '>
-                    <img src={test9} alt=""  className='h-full'/>
-                </div>
-                <div className='w-2/6'>
-                    <h2 className='mb-3 text-red-800 font-semibold'>
-                        <Link>News</Link>
-                    </h2>
-                    <h1 className='text-sm'>
-                        <Link>This is the heading of the pic</Link>
-                    </h1>
-                </div>
-            </Link>
-            <Link className='flex flex-row  w-full   justify-between mb-10'>
-                <div className='w-3/5 min-h-full  '>
-                    <img src={test9} alt=""  className='h-full'/>
-                </div>
-                <div className='w-2/6 '>
-                    <h2 className='mb-3 text-red-800 font-semibold'>
-                        <Link>News</Link>
-                    </h2>
-                    <h1 className='text-sm'>
-                        <Link>This is the heading of the pic</Link>
-                    </h1>
-                </div>
-            </Link>
-            <Link className='flex flex-row  w-full   justify-between'>
-                <div className='w-3/5 min-h-full  '>
-                    <img src={test9} alt=""  className='h-full'/>
-                </div>
-                <div className='w-2/6'>
-                    <h2 className='mb-3 text-red-800 font-semibold'>
-                        <Link>News</Link>
-                    </h2>
-                    <h1 className='text-sm'>
-                        <Link>This is the heading of the pic</Link>
-                    </h1>
-                </div>
-            </Link>
-        </div>
-    </div>
 </div>
   )
 }

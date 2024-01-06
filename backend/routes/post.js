@@ -5,7 +5,7 @@ const router = express.Router();
 router.route('/fetch').get(getPost)
 router.route('/set').post(addPost)
 router.route('/edit/:id').put(editPost)
-router.route('/delete/:id').delete(deletePost)
+router.route('/delete').delete(deletePost)
 
 
 module.exports = router

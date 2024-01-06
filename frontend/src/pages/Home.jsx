@@ -22,9 +22,6 @@ const Home = () => {
       {/* News */}
       <News></News>
 
-      {/* pursuits */}
-      <Pursuites></Pursuites>
-
       {/* Gear */}
       <Gear></Gear>
 
@@ -40,8 +37,6 @@ const Home = () => {
       {/* Travel */}
       <Travel></Travel>
 
-      {/* latest */}
-      <Latest></Latest>
 
     </div>
   )

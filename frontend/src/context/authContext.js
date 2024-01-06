@@ -48,6 +48,10 @@ export const AuthContextProvider = ({children})=>{
         return await Axios.put("/admin/removingEditorChoice",postId)
     }
 
+    // for deleting particular post
+    const removing = async(postId)=>{
+        return await Axios.delete("/user/posts/delete",{data:{postId}})
+    }
 
 
     useEffect(()=>{
@@ -57,6 +61,6 @@ export const AuthContextProvider = ({children})=>{
 
 
     return (
-        <AuthContext.Provider value={{currentUser,login,logout,posts,makeBanner,removingBanner,makingEditorChoice,removingEditorChoice}}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{removing,currentUser,login,logout,posts,makeBanner,removingBanner,makingEditorChoice,removingEditorChoice}}>{children}</AuthContext.Provider>
     )
 }
