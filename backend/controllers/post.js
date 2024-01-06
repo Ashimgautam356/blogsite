@@ -1,6 +1,7 @@
 const db = require("../database");
 const jwt = require("jsonwebtoken");
-
+const fs = require('fs');
+const path = require('path');
 
 // getting all the post
 const getPost = (req, res) => {
@@ -55,11 +56,17 @@ const editPost = (req,res)=>{
 // delete post
 const deletePost = (req,res)=>{
   const token = req.cookies.uid; 
+  if (!token) return res.status(401).json("user not authenticated")
   jwt.verify(token,"Thisissupposetobesuppersecret",(err,userInfo)=>{
     if(err) return res.status(500).json('Token not valid')
 
     const id = req.body.postId.id;
+    const imgFile = req.body.postId.img
     const q = "DELETE FROM posts WHERE `id` = ?";
+
+    const filePath = path.join(__dirname,'../../frontend/public/upload',imgFile)
+    // console.log(filePath)
+    fs.unlinkSync(filePath)
 
     db.query(q,[id],(err,result)=>{
       if(err) return res.status(500).json(err);

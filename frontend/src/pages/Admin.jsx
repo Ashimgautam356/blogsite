@@ -65,19 +65,13 @@ const Admin = () => {
     // handling delete
     const handleDelete = async(id)=>{
         try{
-            const response = await removing({id},(err)=>{
+            const response = await removing(id,(err)=>{
                 err && console.log(err)
             })
         }catch(err){
             console.log(err)
         }
     }
-
-    // deleting all the posts.
-    const deleteAll = async()=>{
-
-    }
-
     // decreasing from editor choice 
     const decreasingChoice = async(id)=>{
         try{
@@ -127,7 +121,7 @@ const Admin = () => {
                                 </>:
                                  <button onClick={()=>decreasingBanner(post.id)} className='w-full  text-sm p-2 mb-2 bg-blue-500 text-white font-medium rounded-md'>Remove Banner</button>
                             }
-                            <button onClick={()=>handleDelete(post.id)} className='w-full  text-sm p-2 mb-2 bg-red-500 text-white font-medium rounded-md'>Delete</button>
+                            <button onClick={()=>handleDelete({id:post.id,img:post.photo})} className='w-full  text-sm p-2 mb-2 bg-red-500 text-white font-medium rounded-md'>Delete</button>
                         </div>
                     </div>
                     )

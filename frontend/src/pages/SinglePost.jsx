@@ -34,18 +34,13 @@ const SinglePost = () => {
 
     const handleDelete = async (id)=>{
       try {
-        const respon = await removing({id},(err)=>{
+        const respon = await removing(id,(err)=>{
           err && console.log(err)
         });
         navigate("/")
       } catch (err) {
         console.log(err);
       }
-    }
-  
-    const getText = (html) =>{
-      const doc = new DOMParser().parseFromString(html, "text/html")
-      return doc.body.textContent
     }
   
     const specificPost = post?.filter(po=> po.cate === category && po.id == id);
@@ -78,7 +73,7 @@ const SinglePost = () => {
                             <Link to={`/newPost?edit=2`} state={p}>
                               <CiEdit className='w-6 h-6 rounded-full cursor-pointer text-white bg-green-400'></CiEdit>
                             </Link>
-                            <MdDelete onClick={()=>handleDelete(p.id)} className='w-6 h-6 text-white bg-red-500  rounded-full cursor-pointer'></MdDelete>
+                            <MdDelete onClick={()=>handleDelete({id:p.id,img:p.photo})} className='w-6 h-6 text-white bg-red-500  rounded-full cursor-pointer'></MdDelete>
                       
                           </div>
                         )}
