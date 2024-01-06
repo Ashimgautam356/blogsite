@@ -100,7 +100,7 @@ const Admin = () => {
             {
                 allPost?.map(post =>{
                     return(
-                    <div className='flex flex-row justify-between  md:w-4/6  col-span-2 relative h-full  pb-10'>
+                    <div className='flex flex-row justify-between  md:w-4/6  col-span-2 relative h-full  pb-10' key={post.id}>
                         <div className='h-14 sm:h-full w-2/6 sm:w-2/6 relative flex flex-row justify-center items-center'>
                             <img src={`/upload/${post.photo}`} alt="" className=' w-full sm:w-full object-cover object-center h-full'/>
                         </div>
